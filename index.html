@@ -68,7 +68,7 @@
       axon("track", "view_item",      { currency: "USD", value: 294, items: axonItems });
       axon("track", "add_to_cart",    { currency: "USD", value: 294, items: axonItems });
       axon("track", "begin_checkout", { currency: "USD", value: 294, items: axonItems });
-      axon("track", "purchase",       { currency: "USD", value: 294, transaction_id: "TEST-" + Date.now(), shipping: 0, tax: 0, items: axonItems });
+      axon("track", "purchase",       { currency: "USD", value: 294, transaction_id: "TEST-" + Date.now(), shipping: 0, tax: 0, items: axonItems, user_data: { email: "test@example.com", phone: "12025550123", user_id: "test-user-0001" } });
     })();
   </script>
   <!-- =============================================================== -->
