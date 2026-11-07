@@ -37,6 +37,41 @@
   <link rel="preload" as="font" href="https://fonts.gstatic.com/s/ubuntu/v21/4iCs6KVjbNBYlgoKfw72.woff2" crossorigin="">
   <link rel="preload" as="font" href="https://fonts.gstatic.com/s/redhatdisplay/v21/8vIQ7wUr0m80wwYf0QCXZzYzUoTg_T6h.woff2" crossorigin="">
   <!-- Timer-delayed price reveal removed: the offer is shown from the start for transparency / ad-platform compliance. -->
+
+  <!-- ===================== AppLovin AXON Pixel ===================== -->
+  <script>
+    var AXON_EVENT_KEY = "34064248-cc54-4ea1-8abb-1964ca0362ba";
+    !function (e, r) {
+      var t = ["https://s.axon.ai/pixel.js"],
+        a = r.axon = function () {
+          a.performOperation ? a.performOperation.apply(a, arguments) : a.operationQueue.push(arguments);
+        };
+      a.operationQueue = [];
+      a.ts = (new Date()).getTime();
+      a.eventKey = AXON_EVENT_KEY;
+      for (var n = e.getElementsByTagName("script")[0], o = 0; o < t.length; o++) {
+        var i = e.createElement("script");
+        i.async = !0; i.src = t[o];
+        n.parentNode.insertBefore(i, n);
+      }
+    }(document, window);
+
+    axon("init");
+
+    /* ============ TEST MODE: fires all events on page load ============
+       Lets you verify every event turns green in the AppLovin panel / AXON Pixel Helper.
+       NOTE: in real traffic this would over-count conversions — remove the
+       view_item/add_to_cart/begin_checkout/purchase test block below before running ads. */
+    (function () {
+      var axonItems = [{ item_id: "ldretra-6", item_name: "VitalBrief 6-Bottle", price: 294, quantity: 1 }];
+      axon("track", "page_view");
+      axon("track", "view_item",      { currency: "USD", value: 294, items: axonItems });
+      axon("track", "add_to_cart",    { currency: "USD", value: 294, items: axonItems });
+      axon("track", "begin_checkout", { currency: "USD", value: 294, items: axonItems });
+      axon("track", "purchase",       { currency: "USD", value: 294, transaction_id: "TEST-" + Date.now(), shipping: 0, tax: 0, items: axonItems });
+    })();
+  </script>
+  <!-- =============================================================== -->
 </head>
 
 <body class="atomicat-disable-selection" data-version="1.3" data-variant="3h9fdoo022h" data-page-type="page" data-page="_6ZIHoWf4pgqjRGQ2ZzGa">
